@@ -181,17 +181,17 @@ template: Jeecg-Boot
    >
    > 组件项下域属性——一个组件会包括多个域（从组件关联的数据实体和服务实体中选择），这里会设置域的视图样式。
 
-6. 运行```src/com/bizmda/CodeGen.java```；
+6. 运行`src/com/bizmda/CodeGen.java`；
 
 7. 你可以在你所设置的代码和资源文档输出目录（根据`mda.yml`的设置，代码输出目录为当前项目目录的`tmp/src`，资源文件输出目录为`tmp/resource`）中，看到生成的代码和资源文档；
 
-8. 用生成的tmp/resource/db/crm/customer.sql文件，在Jeecg-Boot框架项目关联的MySQL数据库中，创建customer表；
+8. 用生成的`tmp/resource/db/crm/customer.sql`文件，在Jeecg-Boot框架项目关联的MySQL数据库中，创建customer表；
 
-9. 把生成的tmp/src目录下所有文件，拷贝到Jeecg-Boot项目中的jeecg-boot/src/main/java目录中；
+9. 把生成的`tmp/src`目录下所有文件，拷贝到Jeecg-Boot项目中的`jeecg-boot/src/main/java`目录中；
 
-10. 把生成的tmp/resource/views目录下所有文件，拷贝到Jeecg-Boot项目中的ant-design-jeecg-vue/src/views目录中；
+10. 把生成的`tmp/resource/views`目录下所有文件，拷贝到Jeecg-Boot项目中的`ant-design-jeecg-vue/src/views`目录中；
 
-11. 在Jeecg-Boot项目启动类JeecgApplication.java中，增加并修改以下二行：
+11. 在Jeecg-Boot项目启动类`JeecgApplication.java`中，增加并修改以下二行：
 
     ```java
     @ComponentScan({"org.jeecg","com.bizmda"})
@@ -202,6 +202,6 @@ template: Jeecg-Boot
 
 ![image](pic/QuickStart1.jpg)
 
-
 13. 重新登录后，即可点击刚才配置好的菜单入口，呈现针对customer表的增、删、改、查功能。
+
 ![image](pic/QuickStart2.jpg)
