@@ -51,7 +51,7 @@ template: Jeecg-Boot
       #数据类型：int,float,decimal(19,2)-money,date,datetime,tinyint-boolean,varchar(100),char(10),blob
       type: char(32)
       #输入类型：text,textarea,checkbox,radiobox,select
-      showType: text
+      inputType: text
       #相关字典名
       dictName:
       #允许为空
@@ -59,7 +59,7 @@ template: Jeecg-Boot
     - name: cust_name
       label: 客户名称
       type: varchar(20)
-      showType: text
+      inputType: text
       isNull: false
     - name: cust_region
       #域标签
@@ -67,7 +67,7 @@ template: Jeecg-Boot
       #数据类型：int,float,decimal(19,2)-money,date,datetime,tinyint-boolean,varchar(100),char(10),blob
       type: varchar(5)
       #输入类型：text,textarea,checkbox,radiobox,select
-      showType: select
+      inputType: select
       #相关字典名
       dictName: region
       #允许为空
@@ -78,14 +78,14 @@ template: Jeecg-Boot
       #数据类型：int,float,decimal(19,2)-money,timestamp,tinyint-boolean,varchar(100),char(10),blob
       type: varchar(100)
       #输入类型：text,textarea,checkbox,radiobox,select
-      showType: text
+      inputType: text
     - name: cust_registered_capital
       #域标签
       label: 注册资金
       #数据类型：int,float,decimal(19,2)-money,timestamp,tinyint-boolean,varchar(100),char(10),blob
       type: decimal(19,2)
       #输入类型：text,textarea,checkbox,radiobox,select
-      showType: text
+      inputType: text
       #允许为空
       isNull: true
    ```
