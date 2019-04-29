@@ -14,7 +14,7 @@ BizMDA是一个基于模型驱动架构的商业应用开发平台，支持多�
 1. 从[BizMDA](https://github.com/szhengye/BizMDA)中Clone下载项目源码；
 2. 在Eclipse或IDEA中作为MAVEN项目导入；
 3. 设置```modal/mda.yml```中代码和资源文件输出目录：
-```markdown
+```yaml
 sourcePath: tmp/src
 resourcePath: tmp/resource
 ```
