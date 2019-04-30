@@ -2,7 +2,7 @@
 
 建模文件位置在BizMDA项目的model文件夹中：
 
-![image](pic/readme1.jpg)
+ ![image](pic/readme1.jpg)
 
 主要包括以下文件和文件夹：
 * mda.yml：项目参数文件

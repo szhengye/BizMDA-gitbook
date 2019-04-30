@@ -12,6 +12,6 @@
       * [Jeecg-Boot快速开发框架](ch2/JeecgBoot.md)
   * [三：扩展新的开发框架](ch3/README.md)
       * [BizMDA建模思路](ch3/Overview.md)
-      * [扩展框架最佳实践](ch3/BestPractice.md)
+      * [扩展框架实施步骤](ch3/BestPractice.md)
       * [index.yml](ch3/IndexYml.md)
       * [vm模板文件](ch3/Vm.md)
