@@ -127,6 +127,8 @@ components:
     actions:
 ```
 在视图中涉及到QUERY、LIST、MODAL共3个component（组件），效果如下：
+
 ![image](pic/readme23.jpg)
 
 ![image](pic/readme24.jpg)
+
