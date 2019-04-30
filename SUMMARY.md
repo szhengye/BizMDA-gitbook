@@ -2,8 +2,8 @@
 
   * [介绍](README.md)
   * [快速入门](ch0/QuickStart.md)
-  * [一：建模](ch1/README.md)
-      * [项目参数](ch1/MdaYml.md)
+  * [一：应用建模](ch1/README.md)
+      * [应用参数(mda.yml)](ch1/MdaYml.md)
       * [数据建模](ch1/Data.md)
       * [视图建模](ch1/View.md)
       * [菜单建模](ch1/Menu.md)
