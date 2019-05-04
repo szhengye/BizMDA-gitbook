@@ -54,19 +54,19 @@ QueryList1Modal.vue.vm模板文件生成数据列表的弹出modal窗口数据�
 配置文件如下例：
 ```yaml
 #视图名称
-name: customer-list
+name: customer-list-1
 #标签
 label: 客户列表
 #所属模块
 module: crm
 #视图展现模块
-model: VIEW-QUERY-LIST1
+model: VIEW-QUERY-LIST-1
 #查询条件域列表
 components:
   #视图类型：查询条件组件
   - type: QUERY
     #相关数据表
-    dataName: customer
+    tableName: customer
     #视图扩展属性
     view:
     fields:
@@ -93,7 +93,7 @@ components:
     #视图类型：数据列表组件
   - type: LIST
     #相关数据表
-    dataName: customer
+    tableName: customer
     #视图扩展属性
     view:
     fields:
@@ -114,16 +114,28 @@ components:
     #视图类型：弹出编辑modal窗口组件
   - type: MODAL
     #相关数据表
-    dataName: customer
+    tableName: customer
     #视图扩展属性
     view:
+      width: 1200
     fields:
       #域名
       - name: cust_no
+        view:
+          span: 12
       - name: cust_name
+        view:
+          span: 24
       - name: cust_region
+        view:
+          span: 12
+          newLine: true
       - name: cust_address
+        view:
+          span: 12
       - name: cust_registered_capital
+        view:
+          span: 8
     actions:
 ```
 在视图中涉及到QUERY、LIST、MODAL共3个component（组件），效果如下：

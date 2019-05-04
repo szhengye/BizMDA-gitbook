@@ -8,6 +8,7 @@
       * [视图建模(view/*.yml)](ch1/View.md)
       * [菜单建模(menu/*.yml)](ch1/Menu.md)
       * [服务建模(service/*.yml)](ch1/Service.md)
+      * [字典建模(dictionary/*.yml)](ch1/dictionary.md)
   * [二：支持开发框架](ch2/README.md)
       * [Jeecg-Boot快速开发框架](ch2/JeecgBoot.md)
   * [三：扩展新的开发框架](ch3/README.md)
