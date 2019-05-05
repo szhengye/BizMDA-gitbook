@@ -96,25 +96,25 @@ template: Jeecg-Boot
    >
    > 数据实体项下各数据域属性——包括域存储属性和视图呈现属性。
 
-5. 视图建模，在`model/view`目录下增加customer(顾客)实体的列表样式视图建模文件`customer-list.yml`
+5. 视图建模，在`model/view`目录下增加customer(顾客)实体的列表样式视图建模文件`customer-list-1.yml`
 
    ```yaml
    #视图名称
-   name: customer-list
+   name: customer-list-1
    #标签
    label: 客户列表
    #所属模块
    module: crm
    #视图展现模块
-   model: VIEW-QUERY-LIST1
+   model: VIEW-QUERY-LIST-1
    #查询条件域列表
    components:
-     #相关数据表
-     - dataName: customer
+     #视图类型：查询条件组件
+     - type: QUERY
+       #相关数据表
+       tableName: customer
        #视图扩展属性
        view:
-         #视图类型：QUERY、MASTER、DETAIL
-         type: QUERY
        fields:
          #域名
        - name: cust_no
@@ -136,12 +136,12 @@ template: Jeecg-Boot
            #跨度
            span: 6
        actions:
-     #相关数据表
-     - dataName: customer
+       #视图类型：数据列表组件
+     - type: LIST
+       #相关数据表
+       tableName: customer
        #视图扩展属性
        view:
-         #视图类型：QUERY、MASTER、DETAIL
-         type: LIST
        fields:
          #域名
          - name: cust_no
@@ -157,19 +157,31 @@ template: Jeecg-Boot
          - name: cust_address
          - name: cust_registered_capital
        actions:
-     #相关数据表
-     - dataName: customer
+       #视图类型：弹出编辑modal窗口组件
+     - type: MODAL
+       #相关数据表
+       tableName: customer
        #视图扩展属性
        view:
-         #视图类型：QUERY、MASTER、DETAIL
-         type: MODAL
+         width: 1200
        fields:
          #域名
          - name: cust_no
+           view:
+             span: 12
          - name: cust_name
+           view:
+             span: 24
          - name: cust_region
+           view:
+             span: 12
+             newLine: true
          - name: cust_address
+           view:
+             span: 12
          - name: cust_registered_capital
+           view:
+             span: 8
        actions:
    ```
 

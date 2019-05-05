@@ -37,21 +37,36 @@ templates:
    target: ${mda.resourcePath}/db/${module}/${name}.sql
    #数据列表VUE页面文件（带查询条件和分页，包括数据增、删、改，多条删除，以及EXCEL文件导入、导出，新增和编辑操作为弹出modal窗口）
  - file: QueryList1.vue.vm
-   model: VIEW-QUERY-LIST1
+   model: VIEW-QUERY-LIST-1
    target: ${mda.resourcePath}/src/views/${module}/${className}.vue
-   #数据列表的弹出modal窗口数据编辑VUE页面文件
+   #同上，为弹出的modal页面
  - file: QueryList1Modal.vue.vm
-   model: VIEW-QUERY-LIST1
+   model: VIEW-QUERY-LIST-1
    target: ${mda.resourcePath}/src/views/${module}/modules/${className}Modal.vue
+   #数据列表VUE页面文件（带查询条件和分页，包括数据增、删、改，多条删除，以及EXCEL文件导入、导出，新增和编辑操作为弹出modal窗口，modal窗口含子表操作）
+ - file: QueryList1.vue.vm
+   model: VIEW-QUERY-LIST-2
+   target: ${mda.resourcePath}/src/views/${module}/${className}.vue
+   #同上，为弹出的modal页面
+ - file: QueryList2Modal.vue.vm
+   model: VIEW-QUERY-LIST-2
+   target: ${mda.resourcePath}/src/views/${module}/modules/${className}Modal.vue
+   #字典文件加载JS文件
+ - file: dictionary.js.vm
+   model: dicts
+   target: ${mda.resourcePath}/src/config/MdaDictionary.js
 ```
 根据以上配置，生成的文件（包括代码和资源文件），如下图所示：
 ![image](pic/readme22.jpg)
 其中，Entity.java.vm、Mapper.java.vm、Mapper.xml.vm、Service.java.vm、ServiceImpl.java.xm、Controller.java.vm模板生成相关文件的使用，请参见Jeecg-Boot框架的[技术文档](http://jeecg-boot.mydoc.io)。
-### QueryList1.vue.vm & QueryList1Modal.vue.vm
-QueryList1.vue.vm模板文件生成数据列表VUE页面文件（带查询条件和分页，包括数据增、删、改，多条删除，以及EXCEL文件导入、导出，新增和编辑操作为弹出modal窗口）.
-QueryList1Modal.vue.vm模板文件生成数据列表的弹出modal窗口数据编辑VUE页面文件。
+### VIEW模板:VIEW-QUERY-LIST-1
+模板**VIEW-QUERY_LIST-1**主要是生成主页面为带查询条件和分页的数据列表，支持数据增、删、改、以及多条删除、EXCEL文件导入、导出；新增和编辑操作为弹出modal页面。
+主要有以下2个vm文件：
+* QueryList1.vue.vm：生成数据列表VUE页面文件（带查询条件和分页，包括数据增、删、改，多条删除，以及EXCEL文件导入、导出，新增和编辑操作为弹出modal页面）.
+* QueryList1Modal.vue.vm：生成数据列表的弹出modal页面，为数据编辑VUE页面文件。
 
-配置文件如下例：
+配置文件如下例（customer-list-1.yml）：
+
 ```yaml
 #视图名称
 name: customer-list-1
@@ -143,4 +158,128 @@ components:
 ![image](pic/readme23.jpg)
 
 ![image](pic/readme24.jpg)
+
+### VIEW模板:VIEW-QUERY-LIST-2
+
+模板**VIEW-QUERY_LIST-1**和VIEW-QUERY-LIST1模板功能类似，唯一的差别是在于弹出编辑页面支持子表的增、删、改。
+
+主要有以下2个vm文件：
+* QueryList1.vue.vm：生成数据列表VUE页面文件（带查询条件和分页，包括数据增、删、改，多条删除，以及EXCEL文件导入、导出，新增和编辑操作为弹出modal页面）.
+* QueryList2Modal.vue.vm：生成数据列表的弹出modal页面，为数据编辑VUE页面文件，包括子表数据的增、删、改。
+
+配置文件如下例（customer-list-2.yml）：
+
+```yaml
+#视图名称
+name: customer-list-2
+#标签
+label: 客户列表
+#所属模块
+module: crm
+#视图展现模块
+model: VIEW-QUERY-LIST-2
+#查询条件域列表
+components:
+  #视图类型：查询条件组件
+  - type: QUERY
+    #相关数据表
+    tableName: customer
+    #视图扩展属性
+    view:
+    fields:
+      #域名
+    - name: cust_no
+      #视图扩展属性
+      view:
+        #提示信息
+        placeholder: 输入客户编号
+        #查询条件类型: EQ GE LE LIKE BETWEEN
+        queryType: EQ
+        #跨度
+        span: 6
+      #域名
+    - name: cust_name
+      view:
+        #提示信息
+        placeholder: 输入客户名称
+        #查询条件类型: EQ GE LE LIKE BETWEEN
+        queryType: EQ
+        #跨度
+        span: 6
+    actions:
+    #视图类型：数据列表组件
+  - type: LIST
+    #相关数据表
+    tableName: customer
+    #视图扩展属性
+    view:
+    fields:
+      #域名
+      - name: cust_no
+      #视图扩展属性
+        view:
+        #提示信息
+          placeholder: 输入客户编号
+      - name: cust_name
+        view:
+          #提示信息
+          placeholder: 输入客户名称
+      - name: cust_region
+      - name: cust_address
+      - name: cust_registered_capital
+    actions:
+    #视图类型：弹出编辑modal窗口主表组件
+  - type: MODAL-MASTER
+    #相关数据表
+    tableName: customer
+    #视图扩展属性
+    view:
+      width: 1200
+    fields:
+      #域名
+      - name: cust_no
+        view:
+          span: 12
+      - name: cust_name
+        view:
+          span: 24
+      - name: cust_region
+        view:
+          span: 12
+          newLine: true
+      - name: cust_address
+        view:
+          span: 12
+      - name: cust_registered_capital
+        view:
+          span: 8
+    actions:
+    #视图类型：弹出编辑modal窗口明细表组件
+  - type: MODAL-DETAIL
+    #相关数据表
+    tableName: cust_linkman
+    #视图扩展属性
+    view:
+    fields:
+      #域名
+      - name: link_name
+        view:
+          span: 5
+      - name: link_sex
+        view:
+          span: 4
+      - name: link_position
+        view:
+          span: 6
+      - name: link_age
+        view:
+          span: 3
+    actions:
+```
+
+在视图中涉及的组件，除了和VIEW-QUERY-LIST-1模板相同的QUERY、LIST组件外，主要区别是在于弹出页面的MODAL-MASTER和MODAL-DETAIL组件，效果如下：
+
+![image](pic/readme25.jpg)
+
+![image](pic/readme26.jpg)
 
