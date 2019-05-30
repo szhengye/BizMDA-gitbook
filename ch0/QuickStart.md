@@ -3,7 +3,7 @@
 
 1. 从[BizMDA](https://github.com/szhengye/BizMDA)中Clone下载项目源码；
 2. 在Eclipse或IDEA中作为MAVEN项目导入；
-3. 设置```modal/mda.yml```中代码和资源文件输出目录：
+3. 设置```model/mda.yml```中代码和资源文件输出目录：
 ```yaml
 #代码作者名
 author: Steven
@@ -25,70 +25,66 @@ template: Jeecg-Boot
 > "sourcePath"和"resourcePath"这2个参数——分别对应代码文件和资源文件的生成输出目录；
 >
 > "template"——指定使用Jeecg-Boot模板进行代码生成，这套代码只适用用Jeecg Boot框架。
-4. 数据建模，在`model/data`目录下增加customer(顾客)实体的数据建模文件`customer.yml`
+4. 数据建模，在`model/data/crm`目录下增加customer(顾客)实体的数据建模文件`customer.yml`
 
-   ```yaml
-   #表名
-   name: customer
-   #标签
-   label: 客户
-   #所属模块
-   module: crm
-   #主键
-   primaryKey: cust_no
-   #主键生成规则（MANUAL-手工输入(缺省) UUID-UUID AUTO_INCREMENT-自增）
-   primaryKeyType: UUID
-   #是否物理删除,会自动生成mda_status域（0正常 1删除 2停用）
-   hasStatus: false
-   #是否跟踪创建和更新，会自动生成create_by,create_date,update_by,update_date
-   hasCreateUpdate: false
-   #域列表
-   fields:
-      #域名
-    - name: cust_no
-      #域标签
-      label: 客户编号
-      #数据类型：int,float,decimal(19,2)-money,date,datetime,tinyint-boolean,varchar(100),char(10),blob
-      type: char(32)
-      #输入类型：text,textarea,checkbox,radiobox,select
-      inputType: text
-      #相关字典名
-      dictName:
-      #允许为空
-      isNull: false
-    - name: cust_name
-      label: 客户名称
-      type: varchar(20)
-      inputType: text
-      isNull: false
-    - name: cust_region
-      #域标签
-      label: 所在地区
-      #数据类型：int,float,decimal(19,2)-money,date,datetime,tinyint-boolean,varchar(100),char(10),blob
-      type: varchar(5)
-      #输入类型：text,textarea,checkbox,radiobox,select
-      inputType: select
-      #相关字典名
-      dictName: region
-      #允许为空
-      isNull: true
-    - name: cust_address
-      #域标签
-      label: 地址
-      #数据类型：int,float,decimal(19,2)-money,timestamp,tinyint-boolean,varchar(100),char(10),blob
-      type: varchar(100)
-      #输入类型：text,textarea,checkbox,radiobox,select
-      inputType: text
-    - name: cust_registered_capital
-      #域标签
-      label: 注册资金
-      #数据类型：int,float,decimal(19,2)-money,timestamp,tinyint-boolean,varchar(100),char(10),blob
-      type: decimal(19,2)
-      #输入类型：text,textarea,checkbox,radiobox,select
-      inputType: text
-      #允许为空
-      isNull: true
-   ```
+```yaml
+#标签
+label: 客户
+#主键
+primaryKey: cust_no
+#主键生成规则（MANUAL-手工输入(缺省) UUID-UUID AUTO_INCREMENT-自增）
+primaryKeyType: UUID
+#是否物理删除,会自动生成mda_status域（0正常 1删除 2停用）
+hasStatus: false
+#是否跟踪创建和更新，会自动生成create_by,create_date,update_by,update_date
+hasCreateUpdate: false
+#域列表
+fields:
+   #域名
+ - name: cust_no
+   #域标签
+   label: 客户编号
+   #数据类型：int,float,decimal(19,2)-money,date,datetime,tinyint-boolean,varchar(100),char(10),blob
+   type: char(32)
+   #输入类型：text,textarea,checkbox,radiobox,select
+   inputType: text
+   #相关字典名
+   dictName:
+   #允许为空
+   isNull: false
+ - name: cust_name
+   label: 客户名称
+   type: varchar(20)
+   inputType: text
+   isNull: false
+ - name: cust_region
+   #域标签
+   label: 所在地区
+   #数据类型：int,float,decimal(19,2)-money,date,datetime,tinyint-boolean,varchar(100),char(10),blob
+   type: varchar(5)
+   #输入类型：text,textarea,checkbox,radiobox,select
+   inputType: select
+   #相关字典名
+   dictName: region
+   #允许为空
+   isNull: true
+ - name: cust_address
+   #域标签
+   label: 地址
+   #数据类型：int,float,decimal(19,2)-money,timestamp,tinyint-boolean,varchar(100),char(10),blob
+   type: varchar(100)
+   #输入类型：text,textarea,checkbox,radiobox,select
+   inputType: text
+ - name: cust_registered_capital
+   #域标签
+   label: 注册资金
+   #数据类型：int,float,decimal(19,2)-money,timestamp,tinyint-boolean,varchar(100),char(10),blob
+   type: decimal(19,2)
+   #输入类型：text,textarea,checkbox,radiobox,select
+   inputType: text
+   #允许为空
+   isNull: true
+```
 
    > 主要设置参数：
    >
@@ -96,94 +92,98 @@ template: Jeecg-Boot
    >
    > 数据实体项下各数据域属性——包括域存储属性和视图呈现属性。
 
-5. 视图建模，在`model/view`目录下增加customer(顾客)实体的列表样式视图建模文件`customer-list-1.yml`
+5. 视图建模，在`model/view/crm`目录下增加customer(顾客)实体的列表样式视图建模文件`customer-list-1.yml`
 
-   ```yaml
-   #视图名称
-   name: customer-list-1
-   #标签
-   label: 客户列表
-   #所属模块
-   module: crm
-   #视图展现模块
-   model: VIEW-QUERY-LIST-1
-   #查询条件域列表
-   components:
-     #视图类型：查询条件组件
-     - type: QUERY
-       #相关数据表
-       tableName: customer
-       #视图扩展属性
-       view:
-       fields:
-         #域名
-       - name: cust_no
-         #视图扩展属性
-         view:
-           #提示信息
-           placeholder: 输入客户编号
-           #查询条件类型: EQ GE LE LIKE BETWEEN
-           queryType: EQ
-           #跨度
-           span: 6
-         #域名
-       - name: cust_name
-         view:
-           #提示信息
-           placeholder: 输入客户名称
-           #查询条件类型: EQ GE LE LIKE BETWEEN
-           queryType: EQ
-           #跨度
-           span: 6
-       actions:
-       #视图类型：数据列表组件
-     - type: LIST
-       #相关数据表
-       tableName: customer
-       #视图扩展属性
-       view:
-       fields:
-         #域名
-         - name: cust_no
-         #视图扩展属性
-           view:
-           #提示信息
-             placeholder: 输入客户编号
-         - name: cust_name
-           view:
-             #提示信息
-             placeholder: 输入客户名称
-         - name: cust_region
-         - name: cust_address
-         - name: cust_registered_capital
-       actions:
-       #视图类型：弹出编辑modal窗口组件
-     - type: MODAL
-       #相关数据表
-       tableName: customer
-       #视图扩展属性
-       view:
-         width: 1200
-       fields:
-         #域名
-         - name: cust_no
-           view:
-             span: 12
-         - name: cust_name
-           view:
-             span: 24
-         - name: cust_region
-           view:
-             span: 12
-             newLine: true
-         - name: cust_address
-           view:
-             span: 12
-         - name: cust_registered_capital
-           view:
-             span: 8
-       actions:
-   ```
+```yaml
+#标签
+label: 客户列表
+#视图展现模块
+model: LIST-1
+#查询条件域列表
+components:
+  #视图类型：查询条件组件
+  - type: QUERY
+    #相关数据表
+    tableName: customer
+    #视图扩展属性
+    view:
+    fields:
+      #域名
+    - name: cust_no
+      #视图扩展属性
+      view:
+        #提示信息
+        placeholder: 输入客户编号
+        #查询条件类型: EQ GE LE LIKE BETWEEN
+        queryType: EQ
+        #跨度
+        span: 6
+      #域名
+    - name: cust_name
+      view:
+        #提示信息
+        placeholder: 输入客户名称
+        #查询条件类型: EQ GE LE LIKE BETWEEN
+        queryType: EQ
+        #跨度
+        span: 6
+    actions:
+    #视图类型：数据列表组件
+  - type: LIST
+    #相关数据表
+    tableName: customer
+    #视图扩展属性
+    view:
+      modalView: /crm/CustomerFormModal1
+    fields:
+      #域名
+      - name: cust_no
+      - name: cust_name
+      - name: cust_region
+      - name: cust_address
+      - name: cust_registered_capital
+    #按钮动作
+    actions:
+      #动作类型
+      - type: LIST-OPEN-VIEW
+        label: 查看
+        icon: read
+        params:
+          view: /crm/CustomerForm1
+          query: "{mda_id: record.custNo}"
+      - type: LIST-DO-SERVICE
+        label: 删除服务
+        icon: delete
+        params:
+          method: delete
+          url: /crm/customer/delete
+          data: "{id: record.custNo}"
+          confirm: true
+      - type: LIST-DELETE
+        label: 删除
+        icon: delete
+      - type: LIST-EDIT-WITH-MODAL
+      - type: ADD-WITH-MODAL
+      - type: BATCH-DELETE
+      - type: OPEN-VIEW
+        label: 打开视图
+        icon: folder-open"
+        params:
+          view: /crm/CustomerForm1
+          confirm: true
+      - type: DO-SERVICE
+        label: 执行服务
+        icon: interation
+        params:
+          method: delete
+          url: /crm/customer/delete
+      - type: EXPORT-EXCEL
+        label: 导出
+        icon: download
+      - type: IMPORT-EXCEL
+        label: 导入
+        icon: import
+```
 
    > 主要设置参数：
    >
