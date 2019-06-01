@@ -8,6 +8,8 @@
 label: 客户列表
 #视图展现模块
 model: LOOKUP
+#相关数据表
+tableName: customer
 #视图扩展属性
 view:
   width: 1200
@@ -16,8 +18,6 @@ view:
 components:
   #视图类型：查询条件组件
   - type: QUERY
-    #相关数据表
-    tableName: customer
     #视图扩展属性
     view:
     fields:
@@ -43,8 +43,6 @@ components:
     actions:
     #视图类型：数据列表组件
   - type: LIST
-    #相关数据表
-    tableName: customer
     #视图扩展属性
     view:
     fields:
