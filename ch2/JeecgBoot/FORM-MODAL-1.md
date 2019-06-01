@@ -1,0 +1,65 @@
+### VIEW模板:FORM-MODAL-1
+模板**FORM-MODAL-1**主要是生成可弹出的模态（MODAL）窗口，包含主表的单记录表单页面和多个子表的数据列表，子表可以直接在列表中进行数据编辑。
+
+配置文件如下例（customer-form-modal-1.yml）：
+
+```yaml
+#标签
+label: 客户列表
+#视图展现模块
+model: FORM-MODAL-1
+#视图扩展属性
+view:
+  width: 1200
+#查询条件域列表
+components:
+  #视图类型：查询条件组件
+  - type: MASTER
+    #相关数据表
+    tableName: customer
+    #视图扩展属性
+    view:
+    fields:
+      #域名
+      - name: cust_no
+        view:
+          span: 12
+      - name: cust_name
+        view:
+          span: 24
+      - name: cust_region
+        view:
+          span: 12
+          newLine: true
+      - name: cust_address
+        view:
+          span: 12
+      - name: cust_registered_capital
+        view:
+          span: 8
+    actions:
+    #视图类型：弹出编辑modal窗口明细表组件
+  - type: DETAIL
+    #相关数据表
+    tableName: cust_linkman
+    #视图扩展属性
+    view:
+    fields:
+      #域名
+      - name: link_name
+        view:
+          span: 5
+      - name: link_sex
+        view:
+          span: 4
+      - name: link_position
+        view:
+          span: 6
+      - name: link_age
+        view:
+          span: 3
+    actions:
+```
+在视图中涉及到MASTER、DETAIL共2个component（组件），效果如下：
+
+![image](pic/form-modal-1.jpg)
