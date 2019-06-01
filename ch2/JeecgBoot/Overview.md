@@ -1,5 +1,7 @@
 Jeecg-Boot框架的模板名为“Jeecg-Boot”，所有模板位于`template/Jeecg-Boot`目录下：
+
 ![image](pic/jeecgboot1.jpg)
+
 ### index.yml
 描述Jeecg-Boot框架所有待生成文件：
 ```yaml
