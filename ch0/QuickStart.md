@@ -201,19 +201,20 @@ components:
 
 9. 把生成的`tmp/src`目录下所有文件，拷贝到Jeecg-Boot项目中的`jeecg-boot/src/main/java`目录中；
 
-10. 把生成的`tmp/resource/views`目录下所有文件，拷贝到Jeecg-Boot项目中的`ant-design-jeecg-vue/src/views`目录中；
+10. 把`resources/Jeecg-Boot/ant-design-jeecg-vue/src`目录下文件，拷贝到Jeecg-Boot项目中的对应`ant-design-jeecg-vue/src`目录中；
+11. 把生成的`tmp/resource/views`目录下所有文件，拷贝到Jeecg-Boot项目中的对应`ant-design-jeecg-vue/src/views`目录中；
 
-11. 在Jeecg-Boot项目启动类`JeecgApplication.java`中，增加并修改以下二行：
+12. 在Jeecg-Boot项目启动类`JeecgApplication.java`中，增加并修改以下二行：
 
     ```java
     @ComponentScan({"org.jeecg","com.bizmda"})
     @MapperScan({"com.bizmda.**.mapper"})
     ```
 
-12. 启动Jeecg-Boot，在菜单管理中配置CustomerList.vue的菜单入口，并配置针对此菜单的使用权限；
+13. 启动Jeecg-Boot，在菜单管理中配置CustomerList.vue的菜单入口，并配置针对此菜单的使用权限；
 
 ![image](pic/QuickStart1.jpg)
 
-13. 重新登录后，即可点击刚才配置好的菜单入口，呈现针对customer表的增、删、改、查功能。
+14. 重新登录后，即可点击刚才配置好的菜单入口，呈现针对customer表的增、删、改、查功能。
 
 ![image](pic/QuickStart2.jpg)
